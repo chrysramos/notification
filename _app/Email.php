@@ -15,14 +15,14 @@ class Email
         $this->mail = new PHPMailer(true);
 
         //Server settings
-        $this->mail->SMTPDebug = $smtpDebug;                                 // Enable verbose debug output
-        $this->mail->isSMTP();                                      // Set mailer to use SMTP
-        $this->mail->Host = $host;                         // Specify main and backup SMTP servers ('caxote.com.br')
-        $this->mail->SMTPAuth = true;                               // Enable SMTP authentication
-        $this->mail->Username = $user;                 // SMTP username ('sender@caxote.com.br')
-        $this->mail->Password = $pass;                           // SMTP password ('teste@123')
-        $this->mail->SMTPSecure = $smtpSecure;                            // Enable TLS encryption, `ssl` also accepted ('tls')
-        $this->mail->Port = $port;                                    // TCP port to connect to (587)
+        $this->mail->SMTPDebug = $smtpDebug;      // Enable verbose debug output
+        $this->mail->isSMTP();                    // Set mailer to use SMTP
+        $this->mail->Host = $host;                // Specify main and backup SMTP servers ('caxote.com.br')
+        $this->mail->SMTPAuth = true;             // Enable SMTP authentication
+        $this->mail->Username = $user;            // SMTP username ('sender@caxote.com.br')
+        $this->mail->Password = $pass;            // SMTP password ('teste@123')
+        $this->mail->SMTPSecure = $smtpSecure;    // Enable TLS encryption, `ssl` also accepted ('tls')
+        $this->mail->Port = $port;                // TCP port to connect to (587)
         $this->mail->CharSet = 'utf-8';
         $this->mail->setLanguage('br');
         $this->mail->isHTML(true);
