@@ -10,25 +10,25 @@ class Email
 
     private $mail = \stdClass::class;
 
-    public function __construct()
+    public function __construct($smtpDebug, $host, $user, $pass, $smtpSecure, $port, $setFromEmail, $setFromName)
     {
         $this->mail = new PHPMailer(true);
 
         //Server settings
-        $this->mail->SMTPDebug = 2;                                 // Enable verbose debug output
+        $this->mail->SMTPDebug = $smtpDebug;                                 // Enable verbose debug output
         $this->mail->isSMTP();                                      // Set mailer to use SMTP
-        $this->mail->Host = 'caxote.com.br';  // Specify main and backup SMTP servers
+        $this->mail->Host = $host;                         // Specify main and backup SMTP servers ('caxote.com.br')
         $this->mail->SMTPAuth = true;                               // Enable SMTP authentication
-        $this->mail->Username = 'sender@caxote.com.br';                 // SMTP username
-        $this->mail->Password = 'teste@123';                           // SMTP password
-        $this->mail->SMTPSecure = 'tls';                            // Enable TLS encryption, `ssl` also accepted
-        $this->mail->Port = 587;                                    // TCP port to connect to
+        $this->mail->Username = $user;                 // SMTP username ('sender@caxote.com.br')
+        $this->mail->Password = $pass;                           // SMTP password ('teste@123')
+        $this->mail->SMTPSecure = $smtpSecure;                            // Enable TLS encryption, `ssl` also accepted ('tls')
+        $this->mail->Port = $port;                                    // TCP port to connect to (587)
         $this->mail->CharSet = 'utf-8';
         $this->mail->setLanguage('br');
         $this->mail->isHTML(true);
 
         //Recipients
-        $this->mail->setFrom('chrystian@caxote.com.br', 'Equipe Caxote');
+        $this->mail->setFrom($setFromEmail, $setFromName); //('chrystian@caxote.com.br', 'Equipe Caxote')
     }
 
     public function sendMail($subject, $body, $replyEmail, $replyName, $addressEmail, $addressName)
